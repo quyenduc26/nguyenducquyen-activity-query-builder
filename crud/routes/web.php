@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/sql', [PostController::class, 'getPostMySQL']);
+Route::get('/pdo', [PostController::class, 'getPostPDO']);
+Route::get('/updatesql/{title}/{description}', [PostController::class, 'updatePostMySQL']);
+// Route::match(['get', 'post'], '/updatesql/{title}/{description}', [PostController::class, 'updatePostMySQL']);
+// Route::match(['get', 'post'], '/updatesql/{title}/{description}', [PostController::class, 'updatePostMySQL']);
+
+Route::get('/updatepdo/{title}/{description}', [PostController::class, 'updatePostPDO']);
